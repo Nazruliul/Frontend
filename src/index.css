@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom visual utilities for cash registers */
+@layer base {
+  body {
+    @apply antialiased text-[#1a1a1a] bg-[#f8f9fa] select-none text-sm;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Elegant scrollbar tweaks for tablet POS displays */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3c6d6;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737685;
+}
+
+/* Printer styled layout overrides for paper receipt reprints */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  #kapi-sidebar, #kapi-navbar, #pos-cart-panel, #pos-transaction-view, #product-catalog-view, #product-management-view, #transaction-history-admin-view, #transaction-history-user-view {
+    display: none !important;
+  }
+  .fixed {
+    position: absolute !important;
+    background: white !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
